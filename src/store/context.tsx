@@ -1,4 +1,4 @@
-import React, { useReducer, createContext } from "react";
+import React, { useEffect, useReducer, createContext } from "react";
 
 import { initialStore } from "./initialStore";
 import { reducer } from "./reducer";
@@ -13,6 +13,10 @@ const AppProvider: React.FC<{
   children: React.ReactElement;
 }> = ({ children }) => {
   const [store, dispatch] = useReducer(reducer, initialStore);
+
+  useEffect((): void => {
+    localStorage.setItem("formBuilderStorage", JSON.stringify(store));
+  }, [store]);
 
   return (
     <AppContext.Provider value={{ dispatch, store }}>{children}</AppContext.Provider>

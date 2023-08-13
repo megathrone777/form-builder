@@ -12,8 +12,6 @@ declare global {
     fields: TFormField[];
     name: string;
   }
-
-  type TIcon = "iconEdit" | "iconTrash" | "iconPlus" | "iconCross";
 }
 
 export {};

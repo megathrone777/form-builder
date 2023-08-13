@@ -41,8 +41,3 @@ export const StyledWrapper = styled.button<TProps>(
     }),
   })
 );
-
-export const StyledIcon = styled.svg(({ theme: { rem } }) => ({
-  maxWidth: rem(17),
-  verticalAlign: "middle",
-}));

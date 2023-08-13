@@ -2,15 +2,15 @@ import React, { useCallback, useState } from "react";
 import { v4 } from "uuid";
 
 import { Form } from "./Form";
-import { options } from "./data";
-import { TOption } from "./types";
+import { controls } from "./data";
+import { TControl } from "./types";
 import { Button } from "~/theme/components";
-import { StyledActions } from "./styled";
+import { StyledHeading } from "./styled";
 
 const Create: React.FC = () => {
   const [fields, setFields] = useState<TFormField[]>([]);
 
-  const handleOptionClick = useCallback(
+  const handleControlClick = useCallback(
     ({ currentTarget }: React.SyntheticEvent<HTMLButtonElement>): void => {
       const { textContent, value } = currentTarget;
 
@@ -23,7 +23,7 @@ const Create: React.FC = () => {
         },
       ]);
     },
-    [options]
+    [controls]
   );
 
   const handleFieldRemove = (fieldId: string): void => {
@@ -37,15 +37,15 @@ const Create: React.FC = () => {
   };
 
   return (
-    <React.Fragment>
-      {options && !!options.length && (
-        <StyledActions>
-          {options.map(
-            ({ label, type }: TOption): React.ReactElement => (
+    <div>
+      {controls && !!controls.length && (
+        <StyledHeading>
+          {controls.map(
+            ({ label, type }: TControl): React.ReactElement => (
               <Button
-                icon="iconPlus"
+                iconId="iconPlus"
                 key={v4()}
-                onClick={handleOptionClick}
+                onClick={handleControlClick}
                 template="primary"
                 type="button"
                 value={type}
@@ -54,11 +54,11 @@ const Create: React.FC = () => {
               </Button>
             )
           )}
-        </StyledActions>
+        </StyledHeading>
       )}
 
       <Form onFieldRemove={handleFieldRemove} {...{ fields }} />
-    </React.Fragment>
+    </div>
   );
 };
 

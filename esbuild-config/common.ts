@@ -25,7 +25,7 @@ const options: BuildOptions = {
     }),
   ],
   preserveSymlinks: true,
-  resolveExtensions: [".ts", ".tsx"],
+  resolveExtensions: [".js", ".ts", ".tsx"],
   splitting: true,
   treeShaking: true,
 };

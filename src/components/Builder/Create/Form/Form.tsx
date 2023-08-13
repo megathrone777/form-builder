@@ -3,12 +3,13 @@ import { v4 } from "uuid";
 
 import { Field } from "./Field";
 import { TProps, TFormErrors } from "./types";
+import { AutoHeight } from "~/components";
 import { useStore } from "~/hooks";
 import { createForm } from "~/store";
 import { Button, Input } from "~/theme/components";
 import {
   StyledWrapper,
-  StyledActions,
+  StyledSubmit,
   StyledPlaceholder,
   StyledError,
 } from "./styled";
@@ -58,6 +59,7 @@ const Form: React.FC<TProps> = ({ fields, onFieldRemove }) => {
         name,
       })
     );
+    setName("");
   };
 
   const handleFormNameChange = ({
@@ -74,39 +76,41 @@ const Form: React.FC<TProps> = ({ fields, onFieldRemove }) => {
   );
 
   return (
-    <StyledWrapper action="#" onSubmit={handleFormSubmit}>
-      <Input
-        hasError={errors.name}
-        label="Name"
-        onChange={handleFormNameChange}
-        placeholder="New form"
-        value={name}
-      />
+    <AutoHeight>
+      <StyledWrapper action="#" onSubmit={handleFormSubmit}>
+        <Input
+          hasError={errors.name}
+          label="Name"
+          onChange={handleFormNameChange}
+          placeholder="New form"
+          value={name}
+        />
 
-      <StyledActions>
-        <Button template="primary" type="submit">
-          Create form
-        </Button>
-      </StyledActions>
+        <StyledSubmit>
+          <Button template="primary" type="submit">
+            Create form
+          </Button>
+        </StyledSubmit>
 
-      {fields && !!fields.length ? (
-        <React.Fragment>
-          {fields.map(
-            (field: TFormField): React.ReactElement => (
-              <Field key={v4()} onRemove={handleFieldRemove} {...field} />
-            )
-          )}
-        </React.Fragment>
-      ) : (
-        <React.Fragment>
-          {errors.fields ? (
-            <StyledError>Please add at least one field.</StyledError>
-          ) : (
-            <StyledPlaceholder>No fields added.</StyledPlaceholder>
-          )}
-        </React.Fragment>
-      )}
-    </StyledWrapper>
+        {fields && !!fields.length ? (
+          <React.Fragment>
+            {fields.map(
+              (field: TFormField): React.ReactElement => (
+                <Field key={v4()} onRemove={handleFieldRemove} {...field} />
+              )
+            )}
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            {errors.fields ? (
+              <StyledError>Please add at least one field.</StyledError>
+            ) : (
+              <StyledPlaceholder>No fields added.</StyledPlaceholder>
+            )}
+          </React.Fragment>
+        )}
+      </StyledWrapper>
+    </AutoHeight>
   );
 };
 

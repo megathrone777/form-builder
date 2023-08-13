@@ -16,42 +16,51 @@ export const StyledLabel = styled.label(({ theme: { fonts, rem } }) => ({
   verticalAlign: "middle",
 }));
 
-export const StyledInput = styled.input(({ type, theme: { colors, rem } }) => ({
-  appearance: "none",
-  border: `${rem(2)} solid ${colors.orange}`,
-  borderRadius: rem(3),
-  display: "inline-block",
-  height: "100%",
-  fontFamily: "inherit",
-  fontSize: rem(15),
-  margin: 0,
-  paddingBlock: 0,
-  paddingInline: rem(4),
-  verticalAlign: "middle",
-  width: rem(170),
+export const StyledInput = styled.input(
+  ({ type, theme: { colors, placeholder, rem } }) => ({
+    appearance: "none",
+    border: `${rem(2)} solid ${colors.orange}`,
+    borderRadius: rem(3),
+    display: "inline-block",
+    height: "100%",
+    fontFamily: "inherit",
+    fontSize: rem(15),
+    margin: 0,
+    paddingBlock: 0,
+    paddingInline: rem(4),
+    verticalAlign: "middle",
+    width: rem(170),
 
-  ...(type === "checkbox" && {
-    cursor: "pointer",
-    height: rem(20),
-    position: "relative",
-    width: rem(20),
+    ...(type === "checkbox" && {
+      cursor: "pointer",
+      height: rem(20),
+      position: "relative",
+      width: rem(20),
 
-    "&:checked": {
-      backgroundColor: colors.orange,
+      "&:checked": {
+        backgroundColor: colors.orange,
+      },
+    }),
+
+    ...(type === "number" && {
+      width: rem(40),
+    }),
+
+    "&:focus": {
+      ...placeholder({
+        color: "transparent",
+      }),
     },
-  }),
 
-  ...(type === "number" && {
-    width: rem(40),
-  }),
+    "&.has-error": {
+      borderColor: colors.red,
+    },
+  })
+);
 
-  "&.has-error": {
-    borderColor: colors.red,
-  },
-}));
-
-export const StyledErrorIcon = styled.svg(({ theme: { colors, rem } }) => ({
+export const StyledErrorIcon = styled.i(({ theme: { colors, rem } }) => ({
   color: colors.red,
+  display: "block",
   left: rem(275),
   maxWidth: rem(25),
   position: "absolute",

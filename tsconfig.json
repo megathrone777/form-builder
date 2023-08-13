@@ -1,12 +1,9 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "assumeChangesOnlyAffectDirectDependencies": true,
     "baseUrl": ".",
     "downlevelIteration": true,
     "esModuleInterop": true,
     "incremental": true,
-    "isolatedModules": true,
     "jsx": "react",
     "module": "ESNext",
     "moduleResolution": "Node",

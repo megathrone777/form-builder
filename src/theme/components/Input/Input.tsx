@@ -1,15 +1,10 @@
 import React, { useId } from "react";
 
 import { TProps } from "./types";
+import { Icon } from "~/theme/components";
 import { StyledWrapper, StyledLabel, StyledErrorIcon, StyledInput } from "./styled";
 
-const Input: React.FC<TProps> = ({
-  hasError,
-  label,
-  placeholder,
-  type,
-  ...rest
-}) => {
+const Input: React.FC<TProps> = ({ hasError, label, type, ...rest }) => {
   const inputId = useId();
   const defaultValue = type === "number" ? 1 : undefined;
 
@@ -18,16 +13,17 @@ const Input: React.FC<TProps> = ({
       <StyledLabel htmlFor={inputId}>{label}</StyledLabel>
 
       <StyledInput
+        autoComplete="off"
         className={hasError ? "has-error" : ""}
         id={inputId}
         min={type === "number" ? 1 : undefined}
-        placeholder={placeholder ? placeholder : "Vyplnit text"}
+        placeholder={type === "text" ? "Vyplnit text" : undefined}
         {...{ defaultValue, type, ...rest }}
       />
 
       {hasError && (
         <StyledErrorIcon>
-          <use href="#iconError" />
+          <Icon id="iconError" />
         </StyledErrorIcon>
       )}
     </StyledWrapper>

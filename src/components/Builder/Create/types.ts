@@ -1,1 +1,1 @@
-export type TOption = Omit<TFormField, "id">;
+export type TControl = Omit<TFormField, "id">;

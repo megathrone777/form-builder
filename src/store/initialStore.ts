@@ -1,7 +1,10 @@
 import { TStore } from "./types";
 
-const initialStore: TStore = {
-  forms: [],
-};
+const currentStore = localStorage.getItem("formBuilderStorage");
+const initialStore: TStore = currentStore
+  ? JSON.parse(currentStore)
+  : {
+      forms: [],
+    };
 
 export { initialStore };

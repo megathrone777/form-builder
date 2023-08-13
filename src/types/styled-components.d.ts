@@ -1,5 +1,5 @@
 import type { CSS, StyledObject } from "styled-components/dist/types";
-import type { TColors, TDevices, TFonts } from "./variables/types";
+import type { TColors, TDevices, TFonts } from "~/theme/variables/types";
 
 declare module "styled-components" {
   interface TRem<P = number> {

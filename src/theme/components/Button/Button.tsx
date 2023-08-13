@@ -1,16 +1,12 @@
 import React from "react";
 
+import { Icon } from "~/theme/components";
 import { TProps } from "./types";
-import { StyledWrapper, StyledIcon } from "./styled";
+import { StyledWrapper } from "./styled";
 
-const Button: React.FC<TProps> = ({ children, icon, ...rest }) => (
+const Button: React.FC<TProps> = ({ children, iconId, ...rest }) => (
   <StyledWrapper {...rest}>
-    {icon && (
-      <StyledIcon>
-        <use href={`#${icon}`} />
-      </StyledIcon>
-    )}
-
+    {iconId && <Icon id={iconId} />}
     {children}
   </StyledWrapper>
 );

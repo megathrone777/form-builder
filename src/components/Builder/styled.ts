@@ -1,7 +1,7 @@
 import { styled } from "~/theme";
 
 export const StyledWrapper = styled.div(({ theme: { devices, rem } }) => ({
-  alignItems: "stretch",
+  alignItems: "flex-start",
   columnGap: rem(100),
   display: "flex",
   height: "100%",

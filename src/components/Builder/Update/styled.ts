@@ -1,7 +1,14 @@
 import { styled } from "~/theme";
 
-export const StyledActions = styled.div(({ theme: { rem } }) => ({
+export const StyledHeading = styled.div(({ theme: { rem } }) => ({
+  alignItems: "center",
   display: "flex",
-  columnGap: rem(10),
-  marginBottom: rem(15),
+  justifyContent: "space-between",
+  marginBottom: rem(20),
+  minHeight: rem(30),
+}));
+
+export const StyledPlaceholder = styled.p(({ theme: { fonts, rem } }) => ({
+  fontSize: rem(19),
+  fontWeight: fonts.medium,
 }));

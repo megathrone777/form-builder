@@ -15,7 +15,7 @@ const App: React.FC = () => {
       children: [
         {
           element: <Builder />,
-          index: true,
+          index: true
         },
         {
           element: <Tester />,

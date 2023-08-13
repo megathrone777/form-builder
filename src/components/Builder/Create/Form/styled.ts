@@ -4,7 +4,7 @@ export const StyledWrapper = styled.form(({ theme: { rem } }) => ({
   minWidth: rem(320),
 }));
 
-export const StyledActions = styled.div(({ theme: { colors, devices, rem } }) => ({
+export const StyledSubmit = styled.div(({ theme: { colors, devices, rem } }) => ({
   borderBottom: `${rem(2)} solid ${colors.blue}`,
   columnGap: rem(10),
   display: "flex",
@@ -16,8 +16,9 @@ export const StyledActions = styled.div(({ theme: { colors, devices, rem } }) =>
   },
 }));
 
-export const StyledPlaceholder = styled.p(({ theme: { rem } }) => ({
+export const StyledPlaceholder = styled.p(({ theme: { fonts, rem } }) => ({
   fontSize: rem(15),
+  fontWeight: fonts.medium,
 }));
 
 export const StyledError = styled.p(({ theme: { colors, fonts, rem } }) => ({
